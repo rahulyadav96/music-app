@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AlbumCard } from './AlbumCard';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 //import { Button } from './Button';
 
 const AlbumContainer = styled.div`
@@ -19,7 +20,6 @@ export const Album = () => {
     useEffect(() => {
         axios.get(`http://localhost:3001/albums`,)
             .then(res => {
-                console.log(res.data)
                 setAlbums(res.data.albums)
             })
     }, [page])
@@ -32,7 +32,11 @@ export const Album = () => {
             <Typography variant='h6'> All Albums</Typography>
             <div>
                 {
-                    albums?.map(data => <div key={data._id} onClick={() => handleClick(data._id)}><AlbumCard album={data} /></div>)
+                    albums?.map(data => <div key={data._id}>
+                        <Link to={`/albums/${data._id}`}>
+                            <AlbumCard album={data} />
+                        </Link>
+                        </div>)
                 }
                 <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
                     <Button onClick={() => setPage(page - 1)} variant='contained'>Prev</Button>

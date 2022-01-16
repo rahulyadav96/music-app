@@ -1,4 +1,3 @@
-import { Button } from "./Button"
 import styled from "styled-components"
 import { Typography } from "@mui/material";
 const Card = styled.div`
@@ -17,7 +16,6 @@ const Card = styled.div`
 
 `
 export const AlbumCard = ({album})=>{
-   console.log(album)
     return (
         <Card>
             <div>
