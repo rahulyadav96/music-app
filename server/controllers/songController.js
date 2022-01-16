@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("/",async(req,res)=>{
     try{
-        const songs = await Song.find().lean().exec();
+        const songs = await Song.find().populate("singers").lean().exec();
         res.status(200).json({songs})
     }catch(err){
         res.status(500).json({err:"Oops!, Somthing Wrong"})

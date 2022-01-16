@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
 
     try {
 
-        const album = await Album.findById(req.params.id).lean().exec();
+        const album = await Album.findById(req.params.id).populate('songs').lean().exec();
         res.status(200).json({ album });
 
     } catch (err) {
