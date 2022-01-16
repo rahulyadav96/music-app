@@ -33,7 +33,7 @@ export const Album = () => {
             <div>
                 {
                     albums?.map(data => <div key={data._id}>
-                        <Link to={`/albums/${data._id}`}>
+                        <Link to={`/albums/${data._id}`} style={{textDecoration:"none", color:"black"}}>
                             <AlbumCard album={data} />
                         </Link>
                         </div>)

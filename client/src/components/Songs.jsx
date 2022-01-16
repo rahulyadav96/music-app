@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -18,9 +18,10 @@ export const Songs =()=>{
         })
     })
     return(
-        <div>
+        <div style={{position:"relative", top:"100px", width:"90%", margin:"auto", display:"flex",flexDirection:"column", gap:"20px" }}>
+            <Typography variant="h6">Songs</Typography>
             {
-                songs?.map(song=><Typography variant="h4" kay={song._id}>{song.title}</Typography>)
+                songs?.map(song=><Card><Typography variant="h4" kay={song._id}>{song.title}</Typography></Card>)
             }
         </div>
     )

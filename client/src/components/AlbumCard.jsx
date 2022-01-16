@@ -3,13 +3,14 @@ import { Typography } from "@mui/material";
 const Card = styled.div`
     background-color:#A793C8;
     heigth:auto;
-    width:90%;
+    width:100%;
     margin:15px auto;
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px;
     cursor:pointer;
+    
     &:hover{
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
     }
