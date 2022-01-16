@@ -1,34 +1,37 @@
-import { Button } from "./Button"
-import styled from "styled-components"
-import { Typography } from "@mui/material";
+
+import { Button, Typography,AppBar,Toolbar } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-const NavBar = styled.div`
-margin:auto;
-heigth:auto;
-background-color:skyblue;
-padding:10px 20px;
-& > div{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+import styled from "styled-components";
+const InputBox = styled.div`
+flex:0.7;
+height:auto;
+outline:1px;
+&>input{
+  width:50%;
+  margin-left:25%;
+  height:30px;
+  font-size:16px;
+  padding:5px 10px 0px 10px;
+  border:none;
+  border-radius:5px;
+  
 }
 `
 export const Navbar = () => {
   return (
-    <NavBar>
-      <div>
+    <AppBar >
+      <Toolbar style={{display:"flex",justifyContent:"space-between", alignItems:"center",}}>
         <div style={{display:"flex", gap:"10px", alignItems:"center"}}>
           <MenuIcon />
           <Typography variant="h6">Music Album</Typography>
         </div>
-        <div>
+        <InputBox>
           <input type="text" placeholder="Search" />
-        </div>
+        </InputBox>
         <div>
-          <Button>SignIn</Button>
+        <Button variant="text" style={{color:"white"}}>Sigin</Button>
         </div>
-
-      </div>
-    </NavBar>
+      </Toolbar>
+    </AppBar>
   )
 }

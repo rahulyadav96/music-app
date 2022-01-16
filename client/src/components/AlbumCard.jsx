@@ -12,7 +12,7 @@ const Card = styled.div`
     padding:15px;
     cursor:pointer;
     &:hover{
-        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
     }
 
 `
@@ -23,9 +23,9 @@ export const AlbumCard = ({album})=>{
             <div>
 
             <Typography variant="h6">{album.title}</Typography>
-            <Typography variant="p">{album.genre}</Typography>
+            <Typography variant="p" style={{color:"rgb(22, 101, 134)", fontSize:"14px"}}>{album.genre}</Typography>
             </div>
-            <div>
+            <div >
                 <Typography variant="p">{album.songs.length} songs</Typography>
             </div>
         </Card>
