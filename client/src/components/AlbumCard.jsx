@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Typography } from "@mui/material";
 const Card = styled.div`
-    background-color:#A793C8;
+    background-color:white;
     heigth:auto;
     width:100%;
     margin:15px auto;
@@ -22,7 +22,7 @@ export const AlbumCard = ({album})=>{
             <div>
 
             <Typography variant="h6">{album.title}</Typography>
-            <Typography variant="p" style={{color:"rgb(22, 101, 134)", fontSize:"14px"}}>{album.genre}</Typography>
+            <Typography variant="p" style={{color:"grey", fontSize:"14px"}}>{album.genre}</Typography>
             </div>
             <div >
                 <Typography variant="p">{album.songs.length} songs</Typography>
