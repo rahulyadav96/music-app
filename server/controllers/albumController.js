@@ -6,12 +6,12 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
     try {
-        // const page = +req.query.page ||1 ;
-        // const size = +req.query.size || 3;
+        const page = +req.query.page ||1 ;
+        const size = +req.query.size || 3;
 
-        // const offset = (page - 1) * size;
+        const offset = (page - 1) * size;
 
-        const albums = await Album.find().lean().exec();
+        const albums = await Album.find().skip(offset).limit(size).lean().exec();
         res.status(200).json({ albums })
     } catch (err) {
         res.status(500).json({ err: "Oops!, Somthing Wrong" })
