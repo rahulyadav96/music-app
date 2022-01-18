@@ -19,13 +19,13 @@ const Card = styled.div`
 export const AlbumCard = ({album})=>{
     return (
         <Card>
-            <div>
-
-            <Typography variant="h6">{album.title}</Typography>
-            <Typography variant="p" style={{color:"grey", fontSize:"14px"}}>{album.genre}</Typography>
+            <div style={{flex:"0.6"}}>
+                <Typography variant="h6">{album.title}</Typography>
+                <Typography variant="p" style={{color:"grey", fontSize:"14px"}}>{album.genre}</Typography>
             </div>
+            <Typography variant="p" style={{flex:"0.2"}}>{album.year}</Typography>
             <div >
-                <Typography variant="p">{album.songs.length} songs</Typography>
+                <Typography variant="p" style={{flex:"0.2"}}>{album.songs.length} songs</Typography>
             </div>
         </Card>
     )

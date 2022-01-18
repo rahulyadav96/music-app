@@ -2,7 +2,7 @@ import { Button, Typography, AppBar, Toolbar } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import styled from "styled-components";
 import { AuthContext } from "../ContextApi/AuthContext"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 const InputBox = styled.div`
 flex:0.7;
@@ -22,10 +22,7 @@ outline:1px;
 `
 export const Navbar = () => {
   const { authToken, setAuthToken ,username} = useContext(AuthContext)
-  const handleClick = () => {
-    if (authToken == "") setAuthToken(Date.now());
-    else setAuthToken("");
-  }
+  const [query, setQuery] = useState("")
   return (
     <AppBar >
       <Toolbar style={{ display: "flex", justifyContent: "space-between", alignItems: "center", }}>
@@ -36,7 +33,7 @@ export const Navbar = () => {
           <Typography variant="h6">Music Album</Typography>
         </div>
         <InputBox>
-          <input type="text" placeholder="Search" />
+          <input type="text" placeholder="Search" value={query} onChange={e=>setQuery(e.target.value)}/>
         </InputBox>
         <div>
           <div style={{width:"auto"}}>

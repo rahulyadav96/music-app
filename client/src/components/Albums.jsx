@@ -45,32 +45,35 @@ const FilterArea = styled.div`
 export const Album = () => {
     const [albums, setAlbums] = useState([]);
     const [page, setPage] = useState(1);
+    const [genre,setGenre] = useState("");
+    const [sorting,setSort]= useState("");
+
     useEffect(() => {
-        axios.get(`http://localhost:3001/albums`,)
+        axios.get(`http://localhost:3001/albums?page=${page}`,)
             .then(res => {
+                //console.log(res.data.albums)
                 setAlbums(res.data.albums)
             })
-    }, [page])
+    }, [page,genre,sorting])
 
-    const handleClick = (id) => {
-        console.log(id)
-    }
+    
     return (
         <AlbumContainer>
             <FilterArea style={{display:"flex", justifyContent:"space-around"}}>
                 <div>
                     Filter by genre:&nbsp; 
-                     <select>
+                     <select onChange={e=>setGenre(e.target.value)}>
                         <option selected disabled>select</option>
-                        <option value="hip-hop">Hip Hop</option>
+                        <option value="hip hop">Hip Hop</option>
                         <option value="oldies">Oldies</option>
                         <option value="jazz">Jazz</option>
-                        <option value="indie-rock">Indie Rock</option>
+                        <option value="indie rock">Indie Rock</option>
+                        <option value="">All</option>
                     </select>
                 </div>
                 <div>
                     Sort by release year: &nbsp;
-                    <select>
+                    <select onChange={e=>setSort(e.target.value)}>
                         <option selected disabled>select</option>
                         <option value="inc">Increasing Year</option>
                         <option value="dec">Descreasing Year</option>
@@ -80,14 +83,21 @@ export const Album = () => {
             <Typography variant='h5'> All Albums</Typography>
             <div>
                 {
-                    albums?.map(data => <div key={data._id}>
+                    albums?.filter((ele)=>{
+                        if(genre=="") return ele;
+                        else if(genre.toLowerCase()==ele.genre.toLowerCase()) return ele
+                    }).sort((a,b)=>{
+                        //console.log(a,b);
+                        if(sorting!=""&& sorting=="inc") return a.year-b.year;
+                        else if(sorting !="" && sorting =="dec") return b.year-a.year;
+                    }).map(data => <div key={data._id}>
                         <Link to={`/albums/${data._id}`} style={{textDecoration:"none", color:"black"}}>
                             <AlbumCard album={data} />
                         </Link>
                         </div>)
                 }
                 <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
-                    <Button onClick={() => setPage(page - 1)} variant='contained'>Prev</Button>
+                    <Button onClick={() => setPage(page - 1)} variant='contained' disabled={page==1?true:false}>Prev</Button>
                     <Button onClick={() => setPage(page + 1)} variant='contained'>Next</Button>
                 </div>
             </div>
