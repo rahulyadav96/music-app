@@ -9,10 +9,16 @@ const { signIn, signUp } = require("../controllers/authController");
 const albumController = require('../controllers/albumController');
 const songController = require('../controllers/songController');
 const singerController = require('../controllers/singerContoller');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json()); //help to access the req.body
-
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 //login and signup for a singer
 
 //signup

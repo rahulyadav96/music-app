@@ -47,7 +47,7 @@ const signUp = async (req,res) =>{
 } 
 
 const signIn = async (req,res)=>{
-
+    // console.log(req.body)
     let user;
     try{
         //validation error
